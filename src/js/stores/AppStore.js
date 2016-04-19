@@ -7,20 +7,19 @@ var AppDispatcher = require('../dispatcher/AppDispatcher');
 
 var CHANGE_EVENT = 'change';
 
-// define where to store your fetched data
-// initialize as empty
-// var obj = [] | {} | ''
+
+var _results = [];
+var _searchText = '';
 
 
 var AppStore = assign({}, EventEmitter.prototype, {
 
-    // define getter and setter methods
-    setObj: function(argument) {
-        return;
+    setSearchText: function(search) {
+        _searchText = search.text;
     },
 
-    getObj: function() {
-        return;
+    setResults: function(results) {
+        _results = results;
     },
 
     emitChange: function() {
@@ -44,8 +43,27 @@ AppDispatcher.register(function(payload) {
 
     switch (action.actionType) {
 
-        // case AppConstants.A_CONSTANT:
-        // ...
+        case AppConstants.SEARCH_TEXT:
+            console.log("Searching text ...");
+
+            // API interaction
+            AppAPI.searchText(action.search);
+
+            // Update search results in views
+            AppStore.setSearchText(action.search);
+
+            // emit changes
+            AppStore.emit(CHANGE_EVENT);
+            break;
+
+        case AppConstants.RECEIVE_RESULTS:
+            console.log("Receiving results ...");
+
+            AppStore.setResults(action.results);
+
+            // emit changes
+            AppStore.emit(CHANGE_EVENT);
+            break;
 
     }
 
