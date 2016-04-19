@@ -1,10 +1,14 @@
 {
-  "name": "TODO",
+  "name": "react-infofinder-search-engine",
   "version": "0.0.0",
-  "description": "TODO",
+  "description": "Displays previews and links of Duckduckgo's search results",
   "main": "main.jsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:eddowh/react-infofinder-search-engine.git"
   },
   "author": "Eddo W. Hintoso",
   "license": "ISC",
