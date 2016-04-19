@@ -14,8 +14,16 @@ var _searchText = '';
 
 var AppStore = assign({}, EventEmitter.prototype, {
 
+    getSearchText: function() {
+        return _searchText;
+    },
+
     setSearchText: function(search) {
         _searchText = search.text;
+    },
+
+    getResults: function() {
+        return _results;
     },
 
     setResults: function(results) {
@@ -57,8 +65,6 @@ AppDispatcher.register(function(payload) {
             break;
 
         case AppConstants.RECEIVE_RESULTS:
-            console.log("Receiving results ...");
-
             AppStore.setResults(action.results);
 
             // emit changes

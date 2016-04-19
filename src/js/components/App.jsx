@@ -16,7 +16,8 @@ var SearchResults = require('./SearchResults.jsx');
 
 function getAppState() {
     return {
-
+        searchText: AppStore.getSearchText(),
+        results: AppStore.getResults()
     };
 }
 
@@ -44,7 +45,7 @@ var App = React.createClass({
         return (
             <div>
                 <SearchForm />
-                <SearchResults />
+                <SearchResults searchText={this.state.searchText} results={this.state.results} />
             </div>
         );
     }

@@ -9,7 +9,7 @@ function create_duckduckgo_api_url(search_text, format = 'json', pretty = true) 
 module.exports = {
 
     searchText: function(search) {
-        console.log("API searching for " + search.text);
+        console.log("API searching for: " + search.text);
 
         url = create_duckduckgo_api_url(search.text);
 
